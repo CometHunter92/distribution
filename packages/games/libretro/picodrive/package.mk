@@ -15,17 +15,16 @@ PKG_TOOLCHAIN="make"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_PATCH_DIRS="${PROJECT}"
+PKG_PATCH_DIRS+="${DEVICE}"
 
-configure_target() {
-  :
-}
-
-make_target() {
-  cd $PKG_BUILD
-#  $PKG_BUILD/configure --platform=generic
+if [ "${ARCH}" = "arm" ]
+then
   make -f Makefile.libretro platform=armv6
-}
+else
+  make_target() {
+    :
+  }
+fi
 
 makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/libretro
