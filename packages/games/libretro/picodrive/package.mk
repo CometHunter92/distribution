@@ -24,7 +24,7 @@ configure_target() {
 make_target() {
   cd $PKG_BUILD
 #  $PKG_BUILD/configure --platform=generic
-  make -f Makefile.libretro
+  make -f Makefile.libretro platform=armv6
 }
 
 makeinstall_target() {
